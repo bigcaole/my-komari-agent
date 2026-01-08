@@ -11,8 +11,8 @@ WORKDIR /opt/komari
 RUN curl -L https://github.com/komari-monitor/komari-agent/releases/latest/download/komari-agent-linux-amd64 -o agent && \
     chmod +x agent
 
-# 暴露 80 端口（虽然探针不用，但用于骗过系统保活）
-EXPOSE 80
+# 暴露 8080 端口（虽然探针不用，但用于骗过系统保活）
+EXPOSE 8080
 
 # 启动脚本：同时启动 Python Web 服务器和 Komari 探针
-CMD python3 -m http.server 80 & ./agent -e https://komari.04260321.xyz -t QjZcai3mzxbxHPjZNIdHap --disable-web-ssh --ignore-unsafe-cert --month-rotate 1
+CMD python3 -m http.server 8080 & ./agent -e https://komari.04260321.xyz -t QjZcai3mzxbxHPjZNIdHap --disable-web-ssh --ignore-unsafe-cert --month-rotate 1
